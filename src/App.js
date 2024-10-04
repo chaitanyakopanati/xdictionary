@@ -28,7 +28,7 @@ function App() {
       <h1>Dictionary App</h1>
       <div className="search-container">
         <input 
-          type="search" 
+          type="text" 
           value={searchTerm} 
           onChange={(e) => setSearchTerm(e.target.value)} 
           className="searchbar" 
