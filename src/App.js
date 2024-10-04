@@ -1,25 +1,25 @@
 import './App.css';
 import { useState } from 'react';
 
-const arr = [
+const dictionary = [
   { word: "React", meaning: "A JavaScript library for building user interfaces." },
   { word: "Component", meaning: "A reusable building block in React." },
   { word: "State", meaning: "An object that stores data for a component." }
 ];
 
 function App() {
-  const [dictionary, setDictionary] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [result, setResult] = useState("");
 
   const searchHandler = (e) => {
     e.preventDefault();
-    const result = arr.find(
+    const foundWord = dictionary.find(
       (item) => item.word.toLowerCase() === searchTerm.toLowerCase()
     );
-    if (result) {
-      setDictionary(result.meaning);
+    if (foundWord) {
+      setResult(foundWord.meaning);
     } else {
-      setDictionary("Word not found in the dictionary.");
+      setResult("Word not found in the dictionary.");
     }
   };
 
@@ -27,16 +27,17 @@ function App() {
     <div className="app">
       <h1>Dictionary App</h1>
       <div className="search-container">
-        <input 
-          type="text" 
-          value={searchTerm} 
-          onChange={(e) => setSearchTerm(e.target.value)} 
-          className="searchbar" 
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search for a word"
+          className="searchbar"
         />
         <button onClick={searchHandler}>Search</button>
       </div>
-      <h4>Definition</h4>
-      <p>{dictionary}</p>
+      <h4>Definition:</h4>
+      <p>{result}</p>
     </div>
   );
 }
