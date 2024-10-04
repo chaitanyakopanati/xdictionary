@@ -1,0 +1,10 @@
+.search-container{
+  display: flex;
+  align-items: center;
+}
+.searchbar{
+  padding: 2;
+}
+.app{
+  margin: 10;  
+}
